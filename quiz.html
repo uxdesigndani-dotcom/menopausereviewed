@@ -295,16 +295,20 @@
 
       options.forEach(opt => {
         const input = opt.querySelector('input');
-        opt.addEventListener('click', (e) => {
-          // Prevent double-toggle when clicking the label
-          if (e.target.tagName === 'INPUT') return;
-          input.checked = !input.checked;
-          opt.classList.toggle('is-checked', input.checked);
-          updateCount();
-        });
+        // Single source of truth: listen for change on the input.
+        // Native label-click toggles the input and fires change; no manual toggle needed.
         input.addEventListener('change', () => {
           opt.classList.toggle('is-checked', input.checked);
           updateCount();
+        });
+        // Keyboard accessibility: Space/Enter on the label toggles
+        opt.setAttribute('tabindex', '0');
+        opt.addEventListener('keydown', (e) => {
+          if (e.key === ' ' || e.key === 'Enter') {
+            e.preventDefault();
+            input.checked = !input.checked;
+            input.dispatchEvent(new Event('change'));
+          }
         });
       });
 
