@@ -645,3 +645,68 @@ a, button, [role="button"], input, textarea, select {
   margin-block: var(--space-8);
 }
 .disclosure strong { color: var(--color-text); }
+
+/* Related reading section (cross-link cards) */
+.related-reading {
+  background: var(--color-cream-tint, #f5efe4);
+  padding: clamp(3rem, 6vw, 5rem) 0;
+  border-top: 1px solid rgba(58, 91, 67, 0.12);
+  margin-top: 3rem;
+}
+.related-reading__eyebrow {
+  font-family: var(--font-sans, 'Inter', sans-serif);
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-terracotta, #a04a2c);
+  margin: 0 0 0.5rem;
+}
+.related-reading__title {
+  font-family: var(--font-serif, 'Source Serif 4', serif);
+  font-size: clamp(1.75rem, 3vw, 2.25rem);
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  color: var(--color-sage-dark, #3a5b43);
+  margin: 0 0 2rem;
+  max-width: 36rem;
+}
+.related-reading__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.25rem;
+}
+.related-card {
+  display: block;
+  padding: 1.5rem 1.5rem 1.75rem;
+  background: #faf6ef;
+  border: 1px solid rgba(58, 91, 67, 0.15);
+  border-radius: 8px;
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 200ms ease, transform 200ms ease, box-shadow 200ms ease;
+}
+.related-card:hover {
+  border-color: var(--color-sage-dark, #3a5b43);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(58, 91, 67, 0.08);
+}
+.related-card__title {
+  font-family: var(--font-serif, 'Source Serif 4', serif);
+  font-size: 1.2rem;
+  font-weight: 500;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  color: var(--color-sage-dark, #3a5b43);
+  margin: 0 0 0.5rem;
+}
+.related-card__dek {
+  font-family: var(--font-sans, 'Inter', sans-serif);
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--color-text-muted, #555);
+  margin: 0;
+}
+@media (prefers-color-scheme: dark) {
+  .related-reading { background: rgba(58, 91, 67, 0.08); }
+  .related-card { background: rgba(250, 246, 239, 0.04); }
+}
